@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Demo.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Demo.cs">
     <Files>
-      <File FileName="Assets/Demo.cs" Line="111" Column="65" />
-      <File FileName="Assets/Plugins/ShareSDK.cs" Line="221" Column="28" />
-      <File FileName="Assets/Plugins/iOS/ShareSDKForiOS.cs" Line="209" Column="4" />
+      <File FileName="Assets\Demo.cs" Line="166" Column="4" />
+      <File FileName="Assets\Plugins\ShareSDK.cs" Line="159" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

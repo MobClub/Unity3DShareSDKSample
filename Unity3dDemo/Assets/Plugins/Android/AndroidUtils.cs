@@ -64,7 +64,7 @@ namespace cn.sharesdk.unity3d {
 		/// <param name="configs">Configs.</param>
 		public void setPlatformConfig(int platform, Hashtable configs) {
 			String json = MiniJSON.jsonEncode(configs);
-			ssdk.CallStatic("setPlatformConfig", json);
+			ssdk.CallStatic("setPlatformConfig", platform, json);
 		}
 
 		/// <summary>
