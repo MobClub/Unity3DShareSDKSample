@@ -11,6 +11,7 @@ public class Demo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{	
+		ShareSDK.setCallbackObjectName("Main Camera");
 		ShareSDK.open ("api20");
 		
 		Hashtable sinaWeiboConf = new Hashtable();
