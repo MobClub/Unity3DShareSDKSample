@@ -25,7 +25,10 @@ public class Demo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			ShareSDK.close();
+			Application.Quit();
+		}
 	}
 	
 	void OnGUI ()
@@ -123,6 +126,10 @@ public class Demo : MonoBehaviour {
 		{
 			print ("fail! error code = " + error["error_code"] + "; error msg = " + error["error_msg"]);
 		}
+		else if (state == ResponseState.Cancel) 
+		{
+			print ("cancel !");
+		}
 	}
 	
 	void GetUserInfoResultHandler (ResponseState state, PlatformType type, Hashtable user, Hashtable error)
@@ -136,6 +143,10 @@ public class Demo : MonoBehaviour {
 		{
 			print ("fail! error code = " + error["error_code"] + "; error msg = " + error["error_msg"]);
 		}
+		else if (state == ResponseState.Cancel) 
+		{
+			print ("cancel !");
+		}
 	}
 	
 	void ShareResultHandler (ResponseState state, PlatformType type, Hashtable shareInfo, Hashtable error, bool end)
@@ -148,6 +159,10 @@ public class Demo : MonoBehaviour {
 		else if (state == ResponseState.Fail)
 		{
 			print ("fail! error code = " + error["error_code"] + "; error msg = " + error["error_msg"]);
+		}
+		else if (state == ResponseState.Cancel) 
+		{
+			print ("cancel !");
 		}
 	}
 }
