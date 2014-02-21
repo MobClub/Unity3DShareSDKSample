@@ -327,10 +327,12 @@ extern "C" {
     
     void __iosShareSDKSetPlatformConfig(int platType, void *configInfo)
     {
-        NSString *configInfoStr = [NSString stringWithCString:configInfo encoding:NSUTF8StringEncoding];
+        NSString *configInfoStr = nil;
+        if (configInfo)
+        {
+            configInfoStr = [NSString stringWithCString:configInfo encoding:NSUTF8StringEncoding];
+        }
         NSDictionary *configInfoDict = [ShareSDK jsonObjectWithString:configInfoStr];
-        
-        NSLog(@"config info = %@", configInfoDict);
         
         [ShareSDK connectPlatformWithType:platType
                                  platform:nil
@@ -568,8 +570,6 @@ extern "C" {
                                     
                                     if (state == SSResponseStateFail && error)
                                     {
-                                        NSLog(@"code: %d, desc: %@", [error errorCode], [error errorDescription]);
-                                        
                                         NSMutableDictionary *errorDict = [NSMutableDictionary dictionary];
                                         [errorDict setObject:[NSNumber numberWithInteger:[error errorCode]] forKey:@"error_code"];
                                         if ([error errorDescription])
