@@ -332,7 +332,24 @@ extern "C" {
         {
             configInfoStr = [NSString stringWithCString:configInfo encoding:NSUTF8StringEncoding];
         }
-        NSDictionary *configInfoDict = [ShareSDK jsonObjectWithString:configInfoStr];
+        NSMutableDictionary *configInfoDict = [NSMutableDictionary dictionaryWithDictionary:[ShareSDK jsonObjectWithString:configInfoStr]];
+        
+        switch (platType)
+        {
+            case ShareTypeWeixiSession:
+            case ShareTypeYiXinSession:
+                [configInfoDict setObject:[NSNumber numberWithInt:0] forKey:@"scene"];
+                break;
+            case ShareTypeWeixiTimeline:
+            case ShareTypeYiXinTimeline:
+                [configInfoDict setObject:[NSNumber numberWithInt:1] forKey:@"scene"];
+                break;
+            case ShareTypeWeixiFav:
+                [configInfoDict setObject:[NSNumber numberWithInt:2] forKey:@"scene"];
+                break;
+            default:
+                break;
+        }
         
         [ShareSDK connectPlatformWithType:platType
                                  platform:nil
