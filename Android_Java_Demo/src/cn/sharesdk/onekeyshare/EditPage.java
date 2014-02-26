@@ -106,7 +106,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		activity.setContentView(llPage);
 		onTextChanged(etContent.getText(), 0, etContent.length(), 0);
 
-		// 获取平台列表并过滤微信
+		// 获取平台列表并过滤微信等使用客户端分享的平台
 		new Thread(){
 			public void run() {
 				platformList = ShareSDK.getPlatformList(activity);
