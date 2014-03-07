@@ -1,9 +1,9 @@
 /*
- * 官网地站:http://www.ShareSDK.cn
- * 技术支持QQ: 4006852216
- * 官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
+ * Offical Website:http://www.ShareSDK.cn
+ * Support QQ: 4006852216
+ * Offical Wechat Account:ShareSDK   (We will inform you our updated news at the first time by Wechat, if we release a new version. If you get any problem, you can also contact us with Wechat, we will reply you within 24 hours.)
  *
- * Copyright (c) 2013年 ShareSDK.cn. All rights reserved.
+ * Copyright (c) 2013 ShareSDK.cn. All rights reserved.
  */
 
 package cn.sharesdk.onekeyshare;
@@ -46,7 +46,12 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.framework.TitleLayout;
 import cn.sharesdk.framework.utils.UIHandler;
 
-/** 执行图文分享的页面，此页面不支持微信平台的分享 */
+/**
+ * Photo-text Sharing will be handling in this page
+ * <p>
+ * note:
+ * wechat, yixin, qzone, etc. are shared in their clients, not in this page
+ */
 public class EditPage extends FakeActivity implements OnClickListener, TextWatcher, Callback {
 	private static final int MAX_TEXT_COUNT = 140;
 	private static final int MSG_PLATFORM_LIST_GOT = 1;
@@ -55,22 +60,22 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 	private OnekeyShare parent;
 	private LinearLayout llPage;
 	private TitleLayout llTitle;
-	// 文本编辑框
+	// share content editor
 	private EditText etContent;
-	// 字数计算器
+	// Words counter
 	private TextView tvCounter;
-	// 别针图片
+	// the pin
 	private ImageView ivPin;
-	// 输入区域的图片
+	// shared image container
 	private ImageView ivImage;
 	private Bitmap image;
 	private boolean shareImage;
 	private LinearLayout llPlat;
 	private LinearLayout llAt;
-	// 平台列表
+	// platform list
 	private Platform[] platformList;
 	private View[] views;
-	// 设置显示模式为Dialog模式
+	// set to display as a dialog
 	private boolean dialogMode;
 
 	public void setShareData(HashMap<String, Object> data) {
@@ -81,7 +86,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		this.parent = parent;
 	}
 
-	/** 设置显示模式为Dialog模式 */
+	/** set to display as a dialog */
 	public void setDialogMode() {
 		dialogMode = true;
 	}
@@ -106,7 +111,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		activity.setContentView(llPage);
 		onTextChanged(etContent.getText(), 0, etContent.length(), 0);
 
-		// 获取平台列表并过滤微信等使用客户端分享的平台
+		// requests platform list and remove platforms share in their clients
 		new Thread(){
 			public void run() {
 				platformList = ShareSDK.getPlatformList(activity);
@@ -138,7 +143,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		llPage.setBackgroundColor(0xff323232);
 		llPage.setOrientation(LinearLayout.VERTICAL);
 
-		// 标题栏
+		// title bar
 		llTitle = new TitleLayout(getContext());
 		int resId = getBitmapRes(activity, "title_back");
 		if (resId > 0) {
@@ -166,7 +171,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		flPage.setLayoutParams(lpFl);
 		llPage.addView(flPage);
 
-		// 页面主体
+		// page body
 		LinearLayout llBody = new LinearLayout(getContext());
 		llBody.setOrientation(LinearLayout.VERTICAL);
 		FrameLayout.LayoutParams lpLl = new FrameLayout.LayoutParams(
@@ -175,7 +180,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		llBody.setLayoutParams(lpLl);
 		flPage.addView(llBody);
 
-		// 别针图片
+		// the pin
 		ivPin = new ImageView(getContext());
 		resId = getBitmapRes(activity, "pin");
 		if (resId > 0) {
@@ -213,7 +218,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		llInput.setLayoutParams(lpInput);
 		llBody.addView(llInput);
 
-		// 平台Logo列表
+		// platform logos
 		LinearLayout llToolBar = new LinearLayout(getContext());
 		resId = getBitmapRes(activity, "share_tb_back");
 		if (resId > 0) {
@@ -234,7 +239,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		llContent.setLayoutParams(lpEt);
 		llInput.addView(llContent);
 
-		// 文字输入区域
+		// share content editor
 		etContent = new EditText(getContext());
 		etContent.setGravity(Gravity.LEFT | Gravity.TOP);
 		etContent.setBackgroundDrawable(null);
@@ -290,7 +295,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 			ivPin.setVisibility(View.GONE);
 		}
 
-		// 输入区域的图片
+		// shared image container
 		if(shareImage){
 			Button btn = new Button(getContext());
 			btn.setTag("img_cancel");
@@ -311,7 +316,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 			flPage.addView(btn);
 		}
 
-		// 字数统计
+		// Words counter
 		tvCounter = new TextView(getContext());
 		tvCounter.setText(String.valueOf(MAX_TEXT_COUNT));
 		tvCounter.setTextColor(0xffcfcfcf);
@@ -363,7 +368,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 				LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 		llInput.addView(llRight);
 
-		// 输入区域的图片
+		// shared image container
 		ivImage = new ImageView(getContext());
 		int resId = getBitmapRes(activity, "btn_back_nor");
 		if (resId > 0) {
@@ -390,7 +395,9 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		ivImage.setOnClickListener(this);
 	}
 
-	// 进新浪微博、腾讯微博、Facebook和Twitter支持At功能
+	// if platform selected form platform gridview is SinaWeibo,
+	// TencentWeibo, Facebook, or Twitter, there will be a button
+	// in the left-bottom of the page, which provides At-friends function
 	private void checkAtMth(LinearLayout llInput, String platform) {
 		if ("SinaWeibo".equals(platform) || "TencentWeibo".equals(platform)
 				|| "Facebook".equals(platform) || "Twitter".equals(platform)) {
@@ -462,7 +469,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 				}
 			}
 
-			// 取消分享的统计
+			// a statistics of Cancel-sharing
 			if (plat != null) {
 				ShareSDK.logDemoEvent(5, plat);
 			}
@@ -470,7 +477,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 			return;
 		}
 
-		// 取消分享的统计
+		// a statistics of Cancel-sharing
 		if (v.equals(llTitle.getBtnRight())) {
 			String text = etContent.getText().toString();
 			reqData.put("text", text);
@@ -516,7 +523,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 			return;
 		}
 
-		// 取消分享图片
+		// remove the photo to share
 		if("img_cancel".equals(v.getTag())){
 			v.setVisibility(View.GONE);
 			ivPin.setVisibility(View.GONE);
@@ -552,7 +559,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		return false;
 	}
 
-	/** 显示平台列表 */
+	/** display platform list */
 	public void afterPlatformListGot() {
 		String name = String.valueOf(reqData.get("platform"));
 		int size = platformList == null ? 0 : platformList.length;
@@ -589,7 +596,7 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 				views[i].setVisibility(View.INVISIBLE);
 				selection = i;
 
-				// 编辑分享内容的统计
+				// a statistics of Sharing
 				ShareSDK.logDemoEvent(3, platformList[i]);
 			}
 			views[i].setLayoutParams(lpMask);
@@ -618,7 +625,10 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 
 		String resName = "logo_" + plat.getName();
 		int resId = getBitmapRes(activity, resName);
-		return BitmapFactory.decodeResource(activity.getResources(), resId);
+		if(resId > 0) {
+			return BitmapFactory.decodeResource(activity.getResources(), resId);
+		}
+		return null;
 	}
 
 	public void beforeTextChanged(CharSequence s, int start, int count,
