@@ -156,10 +156,12 @@ namespace cn.sharesdk.unity3d {
 			// Success = 1, Fail = 2, Cancel = 3
 			switch(status) {
 				case 1: {
+					Console.WriteLine(message);
 					Hashtable resp = (Hashtable) res["res"];
 					OnComplete(platform, action, resp);
 				} break;
 				case 2: {
+					Console.WriteLine(message);
 					Hashtable throwable = (Hashtable) res["res"];
 					OnError(platform, action, throwable);
 				} break;

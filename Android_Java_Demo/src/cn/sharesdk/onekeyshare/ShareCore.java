@@ -41,6 +41,7 @@ public class ShareCore {
 			customizeCallback.onShare(plat, sp);
 		}
 		plat.share(sp);
+		System.out.println(sp.toString());
 		return true;
 	}
 

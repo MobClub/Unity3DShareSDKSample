@@ -237,6 +237,13 @@ public class ShareSDKUtils {
 				}
 				if (map.containsKey("url")) {
 					oks.setUrl(String.valueOf(map.get("url")));
+					oks.setTitleUrl(String.valueOf(map.get("url")));
+				}
+				if (map.containsKey("site")) {
+					oks.setSite(String.valueOf(map.get("site")));
+				}
+				if (map.containsKey("siteUrl")) {
+					oks.setSiteUrl(String.valueOf(map.get("siteUrl")));
 				}
 				oks.setCallback(paListener);
 				oks.show(context);
