@@ -50,11 +50,13 @@
      <Compile Include="Assets\Plugins\MiniJSON.cs" />
      <Compile Include="Assets\Plugins\ShareSDK.cs" />
      <Compile Include="Assets\Plugins\iOS\ShareSDKForiOS.cs" />
+     <None Include="Assets\Plugins\Android\res\values\colors.xml" />
      <None Include="Assets\Plugins\Android\res\values\ssdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\oks_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-en\ssdk_strings.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Plugins\Android\res\values-en\strings.xml" />
-     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values-en\oks_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\styles.xml" />
      <None Include="Assets\Plugins\Android\assets\ShareSDK.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
