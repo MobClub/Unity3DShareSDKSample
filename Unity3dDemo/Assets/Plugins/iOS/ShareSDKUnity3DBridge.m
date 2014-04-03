@@ -475,7 +475,16 @@ extern "C" {
                             }
                             else if ([statusInfo sourceData])
                             {
-                                [resultDict setObject:[statusInfo sourceData] forKey:@"share_info"];
+                                if (type == ShareTypeRenren)
+                                {
+                                    [resultDict setObject:@{@"postid" : [statusInfo sourceData]}
+                                                   forKey:@"share_info"];
+                                }
+                                else
+                                {
+                                    [resultDict setObject:[statusInfo sourceData]
+                                                   forKey:@"share_info"];
+                                }
                             }
                             
                             NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
@@ -528,7 +537,16 @@ extern "C" {
                                   }
                                   else if ([statusInfo sourceData])
                                   {
-                                      [resultDict setObject:[statusInfo sourceData] forKey:@"share_info"];
+                                      if (type == ShareTypeRenren)
+                                      {
+                                          [resultDict setObject:@{@"postid" : [statusInfo sourceData]}
+                                                         forKey:@"share_info"];
+                                      }
+                                      else
+                                      {
+                                          [resultDict setObject:[statusInfo sourceData]
+                                                         forKey:@"share_info"];
+                                      }
                                   }
                                   
                                   NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
@@ -597,10 +615,22 @@ extern "C" {
                                     }
                                     else if ([statusInfo sourceData])
                                     {
-                                        [resultDict setObject:[statusInfo sourceData] forKey:@"share_info"];
+                                        if (type == ShareTypeRenren)
+                                        {
+                                            [resultDict setObject:@{@"postid" : [statusInfo sourceData]}
+                                                           forKey:@"share_info"];
+                                        }
+                                        else
+                                        {
+                                            [resultDict setObject:[statusInfo sourceData]
+                                                           forKey:@"share_info"];
+                                        }
                                     }
                                     
                                     NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                    
+                                    NSLog (@"callback = %@", resultStr);
+                                    
                                     UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                     
                                     if (_refView)
@@ -650,7 +680,16 @@ extern "C" {
                                      }
                                      else if ([statusInfo sourceData])
                                      {
-                                         [resultDict setObject:[statusInfo sourceData] forKey:@"share_info"];
+                                         if (type == ShareTypeRenren)
+                                         {
+                                             [resultDict setObject:@{@"postid" : [statusInfo sourceData]}
+                                                            forKey:@"share_info"];
+                                         }
+                                         else
+                                         {
+                                             [resultDict setObject:[statusInfo sourceData]
+                                                            forKey:@"share_info"];
+                                         }
                                      }
                                      
                                      NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
