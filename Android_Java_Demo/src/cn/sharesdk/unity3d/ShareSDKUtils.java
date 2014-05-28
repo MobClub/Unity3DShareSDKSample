@@ -340,7 +340,7 @@ public class ShareSDKUtils {
 		String image = String.valueOf(content.get("image"));
 		if (image != null && image.startsWith("/")) {
 			map.put("imagePath", image);
-		} else {
+		} else if(!TextUtils.isEmpty(image)){
 			map.put("imageUrl", image);
 		}
 		map.put("title", content.get("title"));
