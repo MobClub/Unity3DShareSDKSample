@@ -51,8 +51,10 @@
      <Compile Include="Assets\Plugins\ShareSDK.cs" />
      <Compile Include="Assets\Plugins\iOS\ShareSDKForiOS.cs" />
      <None Include="Assets\Plugins\Android\res\values\colors.xml" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\ssdk_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\oks_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable-xhdpi\ssdk_oks_shake_to_share_back.xml" />
      <None Include="Assets\Plugins\Android\res\values-en\ssdk_strings.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\Plugins\Android\res\values-en\oks_strings.xml" />
