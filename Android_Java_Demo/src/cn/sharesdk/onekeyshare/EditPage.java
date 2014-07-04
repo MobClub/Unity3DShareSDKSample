@@ -752,9 +752,9 @@ public class EditPage extends FakeActivity implements OnClickListener, TextWatch
 		}
 	}
 
-	public void finish() {
+	public boolean onFinish() {
 		hideSoftInput();
-		super.finish();
+		return super.onFinish();
 	}
 
 	public void onConfigurationChanged(Configuration newConfig) {

@@ -404,15 +404,15 @@ public class OnekeyShare extends FakeActivity implements
 		}
 	}
 
-	public void finish() {
+	public boolean onFinish() {
 		if (finishing) {
-			return;
+			return super.onFinish();
 		}
 
 		if (animHide == null) {
 			finishing = true;
 			super.finish();
-			return;
+			return super.onFinish();
 		}
 
 		// 取消分享菜单的统计
@@ -436,6 +436,7 @@ public class OnekeyShare extends FakeActivity implements
 		});
 		flPage.clearAnimation();
 		flPage.startAnimation(animHide);
+		return super.onFinish();
 	}
 
 	/** 循环执行分享 */
