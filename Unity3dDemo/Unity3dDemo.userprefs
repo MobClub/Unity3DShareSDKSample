@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Android\AndroidManifest.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\AngryBots\Assets\Scripts\U3dGlTest.cs">
     <Files>
-      <File FileName="Assets\Plugins\Android\AndroidManifest.xml" Line="85" Column="12" />
+      <File FileName="..\..\..\AngryBots\Assets\Scripts\U3dGlTest.cs" Line="2" Column="26" />
+      <File FileName="Assets\Plugins\Android\AndroidUtils.cs" Line="9" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
