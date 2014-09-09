@@ -33,13 +33,20 @@ public class ShareSDKUtils {
 	private static String gameObject;
 	private static String callback;
 	
+	/**
+	 * @deprecated
+	 */
 	public static void prepare() {
+		prepare(null);
+	}
+	
+	public static void prepare(Context appContext) {
 		if (DEBUG) {
 			System.out.println("ShareSDKUtils.prepare");
 		}
 		UIHandler.prepare();
 		if (context == null) {
-			context = UnityPlayer.currentActivity.getApplicationContext();
+			context = appContext != null ? appContext.getApplicationContext() : UnityPlayer.currentActivity.getApplicationContext();
 		}
 		if (uiCallback == null) {
 			uiCallback = new Callback() {

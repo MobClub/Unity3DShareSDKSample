@@ -26,8 +26,7 @@
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
-        android:label="ShareSDK_U3D" >
+        android:label="ShareSDK_U3D" android:name="cn.sharesdk.unity3d.ShareSDKApplication">
         <activity
             android:name="cn.sharesdk.unity3d.demo.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
