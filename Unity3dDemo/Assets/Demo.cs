@@ -262,13 +262,15 @@ public class Demo : MonoBehaviour {
 			content["siteUrl"] = "http://sharesdk.cn";
 			content["site"] = "ShareSDK";
 			content["musicUrl"] = "http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3";
-			
+
+			ShareSDK.customSinaWeiboShareContent(content, "sina weibo test string", InheritedValue.VALUE, null);
+
 			ShareResultEvent evt = new ShareResultEvent(ShareResultHandler);
 			ShareSDK.showShareView (PlatformType.Any, content, evt);
 		}
 		
 		btnTop += btnHeight + 20 * scale;
-		if (GUI.Button(new Rect((Screen.width - btnWidth) / 2, btnTop, btnWidth, btnHeight), "Show Content"))
+		if (GUI.Button(new Rect((Screen.width - btnWidth) / 2, btnTop, btnWidth, btnHeight), "Share Content"))
 		{
 			Hashtable content = new Hashtable();
 			content["content"] = "this is a test string.";
@@ -284,6 +286,23 @@ public class Demo : MonoBehaviour {
 			ShareResultEvent evt = new ShareResultEvent(ShareResultHandler);
 			ShareSDK.shareContent (PlatformType.SinaWeibo, content, evt);
 		}
+
+
+		btnTop += btnHeight + 20 * scale;
+		if (GUI.Button(new Rect((Screen.width - btnWidth) / 2, btnTop, btnWidth, btnHeight), "Get Friends SinaWeibo "))
+		{
+			GetFriendsResultEvent evt = new GetFriendsResultEvent(GetFriendsResultHandler);
+			ShareSDK.getFriends (PlatformType.SinaWeibo, null, evt);
+		}
+
+		btnTop += btnHeight + 20 * scale;
+		if (GUI.Button(new Rect((Screen.width - btnWidth) / 2, btnTop, btnWidth, btnHeight), "Get Token SinaWeibo "))
+		{
+			GetCredentialResultEvent evt = new GetCredentialResultEvent(GetTokenResultHandler);
+			ShareSDK.getCredential (PlatformType.SinaWeibo, evt);
+		}
+
+
 	}
 	
 	void AuthResultHandler(ResponseState state, PlatformType type, Hashtable error)
@@ -325,6 +344,40 @@ public class Demo : MonoBehaviour {
 		{
 			print ("share result :");
 			print (MiniJSON.jsonEncode(shareInfo));
+		}
+		else if (state == ResponseState.Fail)
+		{
+			print ("fail! error code = " + error["error_code"] + "; error msg = " + error["error_msg"]);
+		}
+		else if (state == ResponseState.Cancel) 
+		{
+			print ("cancel !");
+		}
+	}
+
+	void GetFriendsResultHandler (ResponseState state, PlatformType type, ArrayList friends, Hashtable error)
+	{
+		if (state == ResponseState.Success)
+		{
+			print ("share result :");
+			print (MiniJSON.jsonEncode(friends));
+		}
+		else if (state == ResponseState.Fail)
+		{
+			print ("fail! error code = " + error["error_code"] + "; error msg = " + error["error_msg"]);
+		}
+		else if (state == ResponseState.Cancel) 
+		{
+			print ("cancel !");
+		}
+	}
+
+	void GetTokenResultHandler (ResponseState state, PlatformType type, Hashtable credential, Hashtable error)
+	{
+		if (state == ResponseState.Success)
+		{
+			print ("share result :");
+			print (MiniJSON.jsonEncode(credential));
 		}
 		else if (state == ResponseState.Fail)
 		{

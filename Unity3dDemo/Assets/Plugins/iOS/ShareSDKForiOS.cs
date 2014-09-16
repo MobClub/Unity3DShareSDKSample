@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace cn.sharesdk.unity3d.ios
 {
-#if UNITY_IPHONE
+//#if UNITY_IPHONE
 	public static class ShareSDK
 	{
 	
@@ -39,10 +39,18 @@ namespace cn.sharesdk.unity3d.ios
 			
 		[DllImport("__Internal")]
 		private static extern void __iosShareSDKShowShareView (int platType, string content, string observer);
+
+		[DllImport("__Internal")]
+		private static extern void __iosShareSDKGetFriendsList (int platType, string page, string observer);
+
+		[DllImport("__Internal")]
+		private static extern void __iosShareSDKGetCredential (int platType, string observer);
 		
 		private static AuthResultEvent _authResultEvent = null;
 		private static GetUserInfoResultEvent _getUserInfoResultEvent = null;
 		private static ShareResultEvent _shareResultEvent = null;
+		private static GetFriendsResultEvent _getFriendsResultEvent = null;
+		private static GetCredentialResultEvent _getCredentialResultEvent = null;
 		
 		private static string _callbackObjectName = "Main Camera";
 		
@@ -144,6 +152,72 @@ namespace cn.sharesdk.unity3d.ios
 			
 			_shareResultEvent (state, type, shareInfo, error, end);
 		}
+
+		/// <summary>
+		/// gets the user info result handler.
+		/// </summary>
+		/// <param name='data'>
+		/// Data.
+		/// </param>
+		private static void _getFriendsResultHandler (Hashtable data)
+		{
+			ResponseState state = ResponseState.Cancel;
+			PlatformType type = PlatformType.Any;
+			ArrayList users = null;
+			Hashtable error = null;
+			
+			if (data.ContainsKey ("state"))
+			{
+				state = (ResponseState)Convert.ToInt32(data ["state"]);
+			}
+			if (data.ContainsKey ("type"))
+			{
+				type = (PlatformType)Convert.ToInt32 (data ["type"]);
+			}
+			if (data.ContainsKey ("users"))
+			{
+				users = (ArrayList)data ["users"];
+			}
+			if (data.ContainsKey ("error"))
+			{
+				error = (Hashtable)data ["error"];
+			}
+			
+			_getFriendsResultEvent (state, type, users, error);
+		}
+
+		/// <summary>
+		/// gets the user info result handler.
+		/// </summary>
+		/// <param name='data'>
+		/// Data.
+		/// </param>
+		private static void _getCredentialResultHandler (Hashtable data)
+		{
+			ResponseState state = ResponseState.Cancel;
+			PlatformType type = PlatformType.Any;
+			Hashtable credential = null;
+			Hashtable error = null;
+			
+			if (data.ContainsKey ("state"))
+			{
+				state = (ResponseState)Convert.ToInt32(data ["state"]);
+			}
+			if (data.ContainsKey ("type"))
+			{
+				type = (PlatformType)Convert.ToInt32 (data ["type"]);
+			}
+			if (data.ContainsKey ("credential"))
+			{
+				credential = (Hashtable)data ["credential"];
+			}
+			if (data.ContainsKey ("error"))
+			{
+				error = (Hashtable)data ["error"];
+			}
+			
+			_getCredentialResultEvent (state, type, credential, error);
+		}
 		
 		/// <summary>
 		/// Callback the specified data.
@@ -173,6 +247,15 @@ namespace cn.sharesdk.unity3d.ios
 					case 3:
 						//Share
 						_shareResultHandler (dataTable);
+						break;
+					case 4:
+						//Get Friends List
+						_getFriendsResultHandler (dataTable);
+						break;
+
+					case 5:
+						//Get Credential Info
+						_getCredentialResultHandler (dataTable);
 						break;
 					}
 				}
@@ -398,6 +481,41 @@ namespace cn.sharesdk.unity3d.ios
 			
 			__iosShareSDKShowShareView ((int)type, MiniJSON.jsonEncode(content), _callbackObjectName);
 		}
+
+		/// <summary>
+		/// Get the friends list.
+		/// </summary>
+		/// <param name='type'>
+		/// Type.
+		/// </param>
+		/// <param name='page'>
+		/// Paging Info : {"pageNo":1, "pageSize":1} or {"cursor":1}
+		/// </param>
+		/// <param name='callback'>
+		/// Callback.
+		/// </param>
+		public static void getFriends (PlatformType type, Hashtable page, GetFriendsResultEvent resultHandler)
+		{
+			_getFriendsResultEvent = resultHandler;
+			
+			__iosShareSDKGetFriendsList((int)type, MiniJSON.jsonEncode(page), _callbackObjectName);
+		}
+
+		/// <summary>
+		/// Get Token.
+		/// </summary>
+		/// <param name='type'>
+		/// Type.
+		/// </param>
+		/// <param name='callback'>
+		/// Callback.
+		/// </param>
+		public static void getCredential (PlatformType type, GetCredentialResultEvent resultHandler)
+		{
+			_getCredentialResultEvent = resultHandler;
+
+			__iosShareSDKGetCredential((int)type, _callbackObjectName);
+		}
 	}
-#endif
+//#endif
 }
