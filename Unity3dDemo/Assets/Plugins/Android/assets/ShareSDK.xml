@@ -34,6 +34,7 @@
 			搜狐微博                 http://open.t.sohu.com
 			网易微博                 http://open.t.163.com
 			豆瓣                           http://developers.douban.com
+			
 			有道云笔记            http://note.youdao.com/open/developguide.html#app
 			印象笔记                 https://dev.evernote.com/
 			Linkedin      https://www.linkedin.com/secure/developer?newapp=
@@ -45,6 +46,9 @@
 			Dropbox       https://www.dropbox.com/developers
 			Instagram     http://instagram.com/developer#
 			VKontakte     http://vk.com/dev
+			易信好友          	http://open.yixin.im/
+			明道	    http://open.mingdao.com/
+			Line	http://media.line.me/zh-hant/
     -->
     
     <ShareSDK 
@@ -74,7 +78,7 @@
         SortId="3"
         AppId="100371282"
         AppKey="aed9b0303e3ed1e27bae87c33761161d"
-        ShareByAppClient="false"
+        ShareByAppClient="true"
         Enable="true" />
     
     <!-- 
@@ -93,13 +97,15 @@
         Id="4"
         SortId="4"
         AppId="wx4868b35061f87885"
-        BypassApproval="true"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
+        BypassApproval="false"
         Enable="true" />
     
     <WechatMoments
         Id="5"
         SortId="5"
         AppId="wx4868b35061f87885"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
         BypassApproval="true"
         Enable="true" />
         
@@ -107,6 +113,7 @@
         Id="6"
         SortId="6"
         AppId="wx4868b35061f87885"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
         Enable="true" />
     
 	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
@@ -115,7 +122,7 @@
         SortId="7"
         AppId="100371282"
         AppKey="aed9b0303e3ed1e27bae87c33761161d"
-        ShareByAppClient="false"
+        ShareByAppClient="true"
         Enable="true" />
     
     <Facebook
@@ -321,6 +328,16 @@
 	<Line
 	    Id="32"
         SortId="32"
+        Enable="true" />
+	
+	<KakaoTalk
+	    Id="33"
+        SortId="33"
+        Enable="true" />
+	
+	<KakaoStory
+	    Id="34"
+        SortId="34"
         Enable="true" />
 	
 </DevInfor>
