@@ -340,4 +340,8 @@
         SortId="34"
         Enable="true" />
 	
+    <WhatsApp
+        Id="35"
+        SortId="35"
+        Enable="true" />
 </DevInfor>
