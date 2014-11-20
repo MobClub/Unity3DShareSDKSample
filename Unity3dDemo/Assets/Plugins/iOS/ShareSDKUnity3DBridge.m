@@ -1567,10 +1567,10 @@ extern "C" {
         {
             if (!_refView)
             {
-                _refView = [[UIView alloc] initWithFrame:CGRectMake(x, y, 1, 1)];
+                _refView = [[UIView alloc] initWithFrame:CGRectMake(x, y, 10, 10)];
             }
             
-            [[UIApplication sharedApplication].keyWindow addSubview:_refView];
+             [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:_refView];
             
             container = [ShareSDK container];
             [container setIPadContainerWithView:_refView arrowDirect:direction];
