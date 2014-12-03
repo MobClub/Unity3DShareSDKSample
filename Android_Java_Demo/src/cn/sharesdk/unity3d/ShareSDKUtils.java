@@ -44,7 +44,6 @@ public class ShareSDKUtils {
 		if (DEBUG) {
 			System.out.println("ShareSDKUtils.prepare");
 		}
-		UIHandler.prepare();
 		if (context == null) {
 			context = appContext != null ? appContext.getApplicationContext() : UnityPlayer.currentActivity.getApplicationContext();
 		}
@@ -128,7 +127,7 @@ public class ShareSDKUtils {
 		}
 		String name = ShareSDK.platformIdToName(platform);
 		Platform plat = ShareSDK.getPlatform(context, name);
-		plat.removeAccount();
+		plat.removeAccount(true);
 	}
 	
 	public static boolean isValid(int platform) {
