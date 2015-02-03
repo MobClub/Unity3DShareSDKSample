@@ -13,9 +13,7 @@ namespace cn.sharesdk.unity3d
 	public enum PlatformType
 	{
 		SinaWeibo = 1,			//Sina Weibo         
-		TencentWeibo = 2,		//Tencent Weibo     
-		SohuWeibo = 3,			//Sohu Weibo         
-		NetEaseWeibo = 4,		//NetEase Weibo         
+		TencentWeibo = 2,		//Tencent Weibo         
 		DouBan = 5,				//Dou Ban           
 		QZone = 6, 				//QZone           
 		Renren = 7,				//Ren Ren           
@@ -51,6 +49,10 @@ namespace cn.sharesdk.unity3d
 		MingDao = 41,          	//明道
 		Line = 42,             	//Line
 		WhatsApp = 43,         	//Whats App
+		KakaoTalk = 44,
+		KakaoStory = 45,
+		FacebookMessenger = 46,
+		Bluetooth = 48,
 		Any = 99 				//Any Platform 
 	}
 	
@@ -632,80 +634,6 @@ namespace cn.sharesdk.unity3d
 					}
 				}
 				content.Add(PlatformType.TencentWeibo, unit);
-			}
-		}
-
-		/// <summary>
-		/// Customs the content of the sohu weibo share.
-		/// </summary>
-		/// <param name="content">Content.</param>
-		/// <param name="message">Message.</param>
-		/// <param name="image">Image.</param>
-		public static void customSohuWeiboShareContent (Hashtable content, object message, object image)
-		{
-			if (Application.platform == RuntimePlatform.IPhonePlayer)
-			{
-				Hashtable unit = new Hashtable();
-				if (message != null)
-				{
-					if (message is InheritedValue)
-					{
-						unit.Add("message", INHERITED_VALUE);
-					}
-					else
-					{
-						unit.Add("message", message);
-					}
-				}
-				if (image != null)
-				{
-					if (image is InheritedValue)
-					{
-						unit.Add("image", INHERITED_VALUE);
-					}
-					else
-					{
-						unit.Add("image", image);
-					}
-				}
-				content.Add(PlatformType.SohuWeibo, unit);
-			}
-		}
-
-		/// <summary>
-		/// Customs the content of the net ease weibo share.
-		/// </summary>
-		/// <param name="content">Content.</param>
-		/// <param name="message">Message.</param>
-		/// <param name="image">Image.</param>
-		public static void customNetEaseWeiboShareContent (Hashtable content, object message, object image)
-		{
-			if (Application.platform == RuntimePlatform.IPhonePlayer)
-			{
-				Hashtable unit = new Hashtable();
-				if (message != null)
-				{
-					if (message is InheritedValue)
-					{
-						unit.Add("message", INHERITED_VALUE);
-					}
-					else
-					{
-						unit.Add("message", message);
-					}
-				}
-				if (image != null)
-				{
-					if (image is InheritedValue)
-					{
-						unit.Add("image", INHERITED_VALUE);
-					}
-					else
-					{
-						unit.Add("image", image);
-					}
-				}
-				content.Add(PlatformType.NetEaseWeibo, unit);
 			}
 		}
 

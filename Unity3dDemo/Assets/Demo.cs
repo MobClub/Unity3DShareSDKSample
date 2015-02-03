@@ -91,20 +91,6 @@ public class Demo : MonoBehaviour {
 		
 		//Copy
 		ShareSDK.setPlatformConfig (PlatformType.Copy, null);
-		
-		//Sohu Weibo
-		Hashtable shwbConf = new Hashtable();
-		shwbConf.Add ("consumer_key", "SAfmTG1blxZY3HztESWx");
-		shwbConf.Add ("consumer_secret", "yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij");
-		shwbConf.Add ("callback_uri", "http://www.sharesdk.cn");
-		ShareSDK.setPlatformConfig (PlatformType.SohuWeibo, shwbConf);
-		
-		//NetEase Weibo
-		Hashtable netConf = new Hashtable();
-		netConf.Add ("consumer_key", "T5EI7BXe13vfyDuy");
-		netConf.Add ("consumer_secret", "gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j");
-		netConf.Add ("redirect_uri", "http://www.shareSDK.cn");
-		ShareSDK.setPlatformConfig (PlatformType.NetEaseWeibo, netConf);
     	
 		//Dropbox
 		Hashtable dbConf = new Hashtable();
