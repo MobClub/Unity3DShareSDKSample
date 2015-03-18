@@ -225,9 +225,9 @@ public class Demo : MonoBehaviour {
 			content["image"] = "http://img.baidu.com/img/image/zhenrenmeinv0207.jpg";
 			content["title"] = "test title";
 			content["description"] = "test description";
-			content["url"] = "http://sharesdk.cn";
+			content["url"] = "http://www.mob.com";
 			content["type"] = Convert.ToString((int)ContentType.News);
-			content["siteUrl"] = "http://sharesdk.cn";
+			content["siteUrl"] = "http://www.mob.com";
 			content["site"] = "ShareSDK";
 			content["musicUrl"] = "http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3";
 			
@@ -243,9 +243,9 @@ public class Demo : MonoBehaviour {
 			content["image"] = "http://img.baidu.com/img/image/zhenrenmeinv0207.jpg";
 			content["title"] = "test title";
 			content["description"] = "test description";
-			content["url"] = "http://sharesdk.cn";
+			content["url"] = "http://www.mob.com";
 			content["type"] = Convert.ToString((int)ContentType.News);
-			content["siteUrl"] = "http://sharesdk.cn";
+			content["siteUrl"] = "http://www.mob.com";
 			content["site"] = "ShareSDK";
 			content["musicUrl"] = "http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3";
 
@@ -263,9 +263,9 @@ public class Demo : MonoBehaviour {
 			content["image"] = "http://img.baidu.com/img/image/zhenrenmeinv0207.jpg";
 			content["title"] = "test title";
 			content["description"] = "test description";
-			content["url"] = "http://sharesdk.cn";
+			content["url"] = "http://www.mob.com";
 			content["type"] = Convert.ToString((int)ContentType.News);
-			content["siteUrl"] = "http://sharesdk.cn";
+			content["siteUrl"] = "http://www.mob.com";
 			content["site"] = "ShareSDK";
 			content["musicUrl"] = "http://mp3.mwap8.com/destdir/Music/2009/20090601/ZuiXuanMinZuFeng20090601119.mp3";
 			
