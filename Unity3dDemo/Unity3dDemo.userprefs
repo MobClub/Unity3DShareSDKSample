@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Android\AndroidManifest.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\New-Unity-For-ShareSDK\Unity3D-ShareSDK\Assets\Plugins\ShareSDK\ShareSDKUtilsInterface.cs">
     <Files>
-      <File FileName="Assets\Plugins\Android\AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="..\..\New-Unity-For-ShareSDK\Unity3D-ShareSDK\Assets\Demo.cs" Line="93" Column="23" />
+      <File FileName="..\..\New-Unity-For-ShareSDK\Unity3D-ShareSDK\Assets\Plugins\ShareSDK\ShareSDK.cs" Line="172" Column="3" />
+      <File FileName="..\..\New-Unity-For-ShareSDK\Unity3D-ShareSDK\Assets\Plugins\ShareSDK\ShareSDKUtilsInterface.cs" Line="70" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
