@@ -331,7 +331,36 @@ namespace cn.sharesdk.unity3d
 			
 			return false;
 		}
-		
+
+		/// <summary>
+		/// Check is Client installed (Temporarily only IOS)
+		/// </summary>
+		/// <returns>
+		/// true is installed, otherwise not installed.
+		/// </returns>
+		/// <param name='type'>
+		/// Type.
+		/// </param>
+		public static bool isClientInstalled (PlatformType type)
+		{
+			if (Application.platform == RuntimePlatform.IPhonePlayer)
+			{
+				#if UNITY_IPHONE
+				return ios.ShareSDK.isClientInstalled(type);
+				#endif
+			}
+			else if (Application.platform == RuntimePlatform.Android)
+			{
+				#if UNITY_ANDROID
+				//Temporarily NO This Api for Andriod;
+				return false;
+				#endif
+			}
+			
+			return false;
+			
+		}
+
 		/// <summary>
 		/// Gets the user info.
 		/// </summary>

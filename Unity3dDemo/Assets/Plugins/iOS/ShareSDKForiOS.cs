@@ -45,6 +45,9 @@ namespace cn.sharesdk.unity3d.ios
 
 		[DllImport("__Internal")]
 		private static extern void __iosShareSDKGetCredential (int platType, string observer);
+
+		[DllImport("__Internal")]
+		private static extern bool __iosShareSDKIsClientInstalled (int platType);
 		
 		private static AuthResultEvent _authResultEvent = null;
 		private static GetUserInfoResultEvent _getUserInfoResultEvent = null;
@@ -353,7 +356,21 @@ namespace cn.sharesdk.unity3d.ios
 		{
 			return __iosShareSDKHasAuthorized ((int)type);
 		}
-		
+
+		/// <summary>
+		/// Check Client Is Installed(Temporarily only IOS)
+		/// </summary>
+		/// <returns>
+		/// true is Installed, otherwise not.
+		/// </returns>
+		/// <param name='type'>
+		/// Type.
+		/// </param>
+		public static bool isClientInstalled (PlatformType type)
+		{
+			return __iosShareSDKIsClientInstalled ((int)type);
+		}
+
 		/// <summary>
 		/// Gets the user info.
 		/// </summary>

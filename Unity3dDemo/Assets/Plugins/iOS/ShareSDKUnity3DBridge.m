@@ -98,6 +98,15 @@ extern "C" {
     extern bool __iosShareSDKHasAuthorized (int platType);
     
     /**
+     *	@brief	检测是否安装客户端
+     *
+     *	@param 	platType 	平台类型
+     *
+     *	@return	YES 表示已经安装，NO 表示尚未安装
+     */
+    extern bool __iosShareSDKIsClientInstalled (int platType);
+    
+    /**
      *	@brief	获取用户信息
      *
      *	@param 	platType 	平台类型
@@ -559,32 +568,32 @@ extern "C" {
                 }
             }
             
-            //搜狐微博
-            value = [contentDict objectForKey:@"SohuWeibo"];
-            if ([value isKindOfClass:[NSDictionary class]])
-            {
-                NSString *message = __parseStringField([value objectForKey:@"message"]);
-                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
-                
-                if ([ShareSDK getClientWithType:ShareTypeSohuWeibo])
-                {
-                    [contentObj addSohuWeiboUnitWithContent:message
-                                                      image:image];
-                }
-            }
-            
-            //网易微博
-            value = [contentDict objectForKey:@"NetEaseWeibo"];
-            if ([value isKindOfClass:[NSDictionary class]])
-            {
-                NSString *message = __parseStringField([value objectForKey:@"message"]);
-                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
-                
-                if ([ShareSDK getClientWithType:ShareType163Weibo])
-                {
-                    [contentObj add163WeiboUnitWithContent:message image:image];
-                }
-            }
+//            //搜狐微博
+//            value = [contentDict objectForKey:@"SohuWeibo"];
+//            if ([value isKindOfClass:[NSDictionary class]])
+//            {
+//                NSString *message = __parseStringField([value objectForKey:@"message"]);
+//                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
+//                
+//                if ([ShareSDK getClientWithType:ShareTypeSohuWeibo])
+//                {
+//                    [contentObj addSohuWeiboUnitWithContent:message
+//                                                      image:image];
+//                }
+//            }
+//            
+//            //网易微博
+//            value = [contentDict objectForKey:@"NetEaseWeibo"];
+//            if ([value isKindOfClass:[NSDictionary class]])
+//            {
+//                NSString *message = __parseStringField([value objectForKey:@"message"]);
+//                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
+//                
+//                if ([ShareSDK getClientWithType:ShareType163Weibo])
+//                {
+//                    [contentObj add163WeiboUnitWithContent:message image:image];
+//                }
+//            }
             
             //豆瓣
             value = [contentDict objectForKey:@"DouBan"];
@@ -1384,6 +1393,12 @@ extern "C" {
     bool __iosShareSDKHasAuthorized (int platType)
     {
         return [ShareSDK hasAuthorizedWithType:platType];
+    }
+    
+    bool __iosShareSDKIsClientInstalled (int platType)
+    {
+        id <ISSPlatformApp> app = [ShareSDK getClientWithType:platType];
+        return [app isClientInstalled];
     }
     
     void __iosShareSDKGetUserInfo (int platType, void *observer)
