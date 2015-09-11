@@ -323,6 +323,7 @@ public class Demo : MonoBehaviour {
 	
 	void AuthResultHandler(ResponseState state, PlatformType type, Hashtable error)
 	{
+		print (" =============== AuthResultHandler");
 		if (state == ResponseState.Success)
 		{
 			print ("success !");
@@ -339,6 +340,7 @@ public class Demo : MonoBehaviour {
 	
 	void GetUserInfoResultHandler (ResponseState state, PlatformType type, Hashtable user, Hashtable error)
 	{
+		print (" =============== GetUserInfoResultHandler");
 		if (state == ResponseState.Success)
 		{
 			print ("get user result :");
@@ -356,6 +358,7 @@ public class Demo : MonoBehaviour {
 	
 	void ShareResultHandler (ResponseState state, PlatformType type, Hashtable shareInfo, Hashtable error, bool end)
 	{
+		print (" =============== ShareResultHandler");
 		if (state == ResponseState.Success)
 		{
 			print ("share result :");
@@ -373,6 +376,7 @@ public class Demo : MonoBehaviour {
 
 	void GetFriendsResultHandler (ResponseState state, PlatformType type, ArrayList friends, Hashtable error)
 	{
+		print (" =============== GetFriendsResultHandler");
 		if (state == ResponseState.Success)
 		{
 			print ("share result :");
@@ -390,6 +394,7 @@ public class Demo : MonoBehaviour {
 
 	void GetTokenResultHandler (ResponseState state, PlatformType type, Hashtable credential, Hashtable error)
 	{
+		print (" =============== GetTokenResultHandler");
 		if (state == ResponseState.Success)
 		{
 			print ("share result :");
