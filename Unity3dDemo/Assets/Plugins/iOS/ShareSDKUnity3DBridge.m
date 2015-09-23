@@ -20,7 +20,6 @@
 #define __SHARESDK_GOOGLEPLUS__
 #define __SHARESDK_QQ__
 #define __SHARESDK_RENREN__
-#define __SHARESDK_TENCENT_WEIBO__
 
 #ifdef __SHARESDK_WECHAT__
 #import "WXApi.h"
@@ -48,9 +47,7 @@
 #import <RennSDK/RennSDK.h>
 #endif
 
-#ifdef __SHARESDK_TENCENT_WEIBO__
-#import "WeiboApi.h"
-#endif
+
 
 static UIView *_refView = nil;
 
@@ -376,7 +373,6 @@ extern "C" {
     {
         NSDictionary *contentDict = [ShareSDK jsonObjectWithString:data];
         
-        NSLog(@"contentDict = %@", contentDict);
         
         NSString *message = nil;
         id<ISSCAttachment> image = nil;
@@ -568,32 +564,6 @@ extern "C" {
                 }
             }
             
-//            //搜狐微博
-//            value = [contentDict objectForKey:@"SohuWeibo"];
-//            if ([value isKindOfClass:[NSDictionary class]])
-//            {
-//                NSString *message = __parseStringField([value objectForKey:@"message"]);
-//                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
-//                
-//                if ([ShareSDK getClientWithType:ShareTypeSohuWeibo])
-//                {
-//                    [contentObj addSohuWeiboUnitWithContent:message
-//                                                      image:image];
-//                }
-//            }
-//            
-//            //网易微博
-//            value = [contentDict objectForKey:@"NetEaseWeibo"];
-//            if ([value isKindOfClass:[NSDictionary class]])
-//            {
-//                NSString *message = __parseStringField([value objectForKey:@"message"]);
-//                id<ISSCAttachment> image = __parseImageField ([value objectForKey:@"image"]);
-//                
-//                if ([ShareSDK getClientWithType:ShareType163Weibo])
-//                {
-//                    [contentObj add163WeiboUnitWithContent:message image:image];
-//                }
-//            }
             
             //豆瓣
             value = [contentDict objectForKey:@"DouBan"];
@@ -1028,18 +998,6 @@ extern "C" {
                 }
             }
             
-            //搜狐随身看
-            value = [contentDict objectForKey:@"SohuKan"];
-            if ([value isKindOfClass:[NSDictionary class]])
-            {
-                NSString *url = __parseStringField([value objectForKey:@"url"]);
-                
-                if ([ShareSDK getClientWithType:ShareTypeSohuKan])
-                {
-                    [contentObj addSohuKanUnitWithUrl:url];
-                }
-            }
-            
             //Pinterest
             value = [contentDict objectForKey:@"Pinterest"];
             if ([value isKindOfClass:[NSDictionary class]])
@@ -1316,9 +1274,6 @@ extern "C" {
         [ShareSDK importRenRenClass:[RennClient class]];
 #endif
       
-#ifdef __SHARESDK_TENCENT_WEIBO__
-        [ShareSDK importTencentWeiboClass:[WeiboApi class]];
-#endif
     }
     
     void __iosShareSDKSetPlatformConfig(int platType, void *configInfo)
@@ -1379,8 +1334,9 @@ extern "C" {
                                 }
                                 [resultDict setObject:errorDict forKey:@"error"];
                             }
-                            
+
                             NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                            
                             UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                         }];
     }
@@ -1434,6 +1390,7 @@ extern "C" {
                                    }
                                    
                                    NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                  
                                    UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                    
                                }];
@@ -1630,8 +1587,6 @@ extern "C" {
                                     }
                                     
                                     NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
-                                    
-                                    NSLog (@"callback = %@", resultStr);
                                     
                                     UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                     
