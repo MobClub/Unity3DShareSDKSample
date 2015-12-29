@@ -8,7 +8,7 @@
 
 #import "ShareSDKUnity3DBridge.h"
 #import <ShareSDK/ShareSDK.h>
-#import <SHareSDK/ShareSDK+Utils.h>
+#import <ShareSDK/ShareSDK+Utils.h>
 #import <AGCommon/CMRegexKitLite.h>
 #import <AGCommon/UIDevice+Common.h>
 
@@ -46,7 +46,6 @@
 #ifdef __SHARESDK_RENREN__
 #import <RennSDK/RennSDK.h>
 #endif
-
 
 
 static UIView *_refView = nil;
@@ -373,7 +372,6 @@ extern "C" {
     {
         NSDictionary *contentDict = [ShareSDK jsonObjectWithString:data];
         
-        
         NSString *message = nil;
         id<ISSCAttachment> image = nil;
         NSString *title = nil;
@@ -563,7 +561,6 @@ extern "C" {
                                             locationCoordinate:location];
                 }
             }
-            
             
             //豆瓣
             value = [contentDict objectForKey:@"DouBan"];
@@ -1334,9 +1331,8 @@ extern "C" {
                                 }
                                 [resultDict setObject:errorDict forKey:@"error"];
                             }
-
-                            NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
                             
+                            NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
                             UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                         }];
     }
@@ -1390,7 +1386,6 @@ extern "C" {
                                    }
                                    
                                    NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
-                                  
                                    UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                    
                                }];
