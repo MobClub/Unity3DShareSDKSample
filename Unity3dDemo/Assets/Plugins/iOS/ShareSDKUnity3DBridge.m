@@ -11,7 +11,7 @@
 #import <ShareSDK/ShareSDK+Utils.h>
 #import <AGCommon/CMRegexKitLite.h>
 #import <AGCommon/UIDevice+Common.h>
-
+#import <MOBFoundation/MOBFJson.h>
 #define INHERITED_VALUE_STR @"{inherited}"
 
 #define __SHARESDK_WECHAT__
@@ -1332,7 +1332,7 @@ extern "C" {
                                 [resultDict setObject:errorDict forKey:@"error"];
                             }
                             
-                            NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                            NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                             UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                         }];
     }
@@ -1385,7 +1385,7 @@ extern "C" {
                                        [resultDict setObject:[userInfo sourceData] forKey:@"user"];
                                    }
                                    
-                                   NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                   NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                                    UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                    
                                }];
@@ -1441,7 +1441,7 @@ extern "C" {
                                 }
                             }
                             
-                            NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                            NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                             UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                         }];
     }
@@ -1503,7 +1503,7 @@ extern "C" {
                                       }
                                   }
                                   
-                                  NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                  NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                                   UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                   
                               }];
@@ -1581,7 +1581,7 @@ extern "C" {
                                         }
                                     }
                                     
-                                    NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                    NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                                     
                                     UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                     
@@ -1644,7 +1644,7 @@ extern "C" {
                                          }
                                      }
                                      
-                                     NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                     NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                                      UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                                      
                                  }];
@@ -1741,7 +1741,7 @@ extern "C" {
                                       }
                                   }
                                   
-                                  NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+                                  NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
                                   UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
                               }];
         
@@ -1783,7 +1783,7 @@ extern "C" {
             [resultDict setObject:credDict forKey:@"credential"];
         }
         
-        NSString *resultStr = [ShareSDK jsonStringWithObject:resultDict];
+        NSString *resultStr = [MOBFJson jsonStringFromObject:resultDict];
         UnitySendMessage([observerStr UTF8String], "_callback", [resultStr UTF8String]);
     }
     
